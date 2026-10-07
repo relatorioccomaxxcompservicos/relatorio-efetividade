@@ -1,0 +1,21 @@
+name = "maxx-efetividade-api"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "maxx-efetividade"
+database_id = "edde50d6-15c0-48d0-9dca-2886ce5ae6da"
+
+# Serve o dashboard (../dashboard) e deixa só /api/* para o Worker
+[assets]
+directory = "../dashboard"
+run_worker_first = ["/api/*"]
+
+# Sincronização com o Google Sheets (a cada hora). Segredos: GOOGLE_API_KEY e SYNC_TOKEN (wrangler secret put)
+[triggers]
+crons = ["0 * * * *"]
+
+[vars]
+SHEET_ID = "1dtMmcHschKHuubdaVgBhR3DlkfABD9AsiUkmGTUt9n4"
+SHEET_RANGE = "EFETIVIDADE!A4:U"

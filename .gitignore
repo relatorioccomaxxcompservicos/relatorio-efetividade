@@ -1,0 +1,5 @@
+data/*.sql
+__pycache__/
+node_modules/
+.wrangler/
+data/*.xlsx
